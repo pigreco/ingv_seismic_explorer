@@ -1044,11 +1044,11 @@ class SeismicExplorerDialog(QDialog):
   p     { margin: 4px 0 8px 0; line-height: 1.5; }
   ul    { margin: 4px 0 8px 18px; padding: 0; }
   li    { margin-bottom: 3px; line-height: 1.45; }
-  code  { font-family: monospace; background: #f0f0f0; padding: 1px 4px;
+  code  { font-family: monospace; background: #f0f0f0; color: #222222; padding: 1px 4px;
           border-radius: 3px; font-size: 9.5pt; }
-  .tip  { background: #eaf4fb; border-left: 3px solid #2980b9;
+  .tip  { background: #eaf4fb; color: #1a3a4a; border-left: 3px solid #2980b9;
           padding: 6px 10px; border-radius: 2px; margin: 6px 0; }
-  .warn { background: #fef9e7; border-left: 3px solid #f39c12;
+  .warn { background: #fef9e7; color: #4a3a00; border-left: 3px solid #f39c12;
           padding: 6px 10px; border-radius: 2px; margin: 6px 0; }
   a     { color: #2980b9; }
   hr    { border: none; border-top: 1px solid #ddd; margin: 14px 0; }
