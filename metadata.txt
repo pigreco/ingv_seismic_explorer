@@ -3,7 +3,7 @@ name=INGV Seismic Explorer
 qgisMinimumVersion=3.20
 description=Import and visualize seismic events from INGV (Istituto Nazionale di Geofisica e Vulcanologia) directly in QGIS
 version=0.1.0
-author=pigreco
+author=Salvatore Fiandaca
 email=pigrecoinfinito@gmail.com
 about=INGV Seismic Explorer connects to the official INGV FDSNWS web services to download
     earthquake events and seismic station data directly into QGIS layers.
