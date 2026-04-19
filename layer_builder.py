@@ -206,8 +206,8 @@ def enable_temporal_properties(layer: QgsVectorLayer,
         props.setStartField(time_field)
 
         # Duration: keep each event visible for 1 hour on the timeline
-        from qgis.PyQt.QtCore import QgsInterval
-        props.setFixedDuration(QgsInterval(3600))    # 3600 seconds = 1 hour
+        from qgis.core import QgsInterval
+        props.setFixedDuration(QgsInterval(3600))
 
         layer.temporalPropertiesChanged.emit()
 
