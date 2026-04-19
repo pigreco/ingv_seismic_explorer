@@ -1,0 +1,32 @@
+[general]
+name=INGV Seismic Explorer
+qgisMinimumVersion=3.20
+description=Import and visualize seismic events from INGV (Istituto Nazionale di Geofisica e Vulcanologia) directly in QGIS
+version=0.1.0
+author=pigreco
+email=pigrecoinfinito@gmail.com
+about=INGV Seismic Explorer connects to the official INGV FDSNWS web services to download
+    earthquake events and seismic station data directly into QGIS layers.
+
+    Features:
+    - Query seismic events by date range, magnitude, depth and geographic area
+    - Use current map extent as search area
+    - Automatic graduated symbology (circle size = magnitude, color = depth)
+    - Import seismic station network (Rete Sismica Nazionale, 400+ stations)
+    - Export results to GeoPackage, Shapefile or GeoJSON
+
+    Data source: INGV FDSNWS Event API (webservices.ingv.it)
+    No API key required. Data is open and free.
+
+tracker=https://github.com/pigreco/ingv_seismic_explorer/issues
+repository=https://github.com/pigreco/ingv_seismic_explorer
+homepage=https://github.com/pigreco/ingv_seismic_explorer
+hasProcessingProvider=no
+tags=seismic, earthquake, INGV, Italy, monitoring, geology, geophysics, FDSN
+category=Web
+icon=icon.png
+experimental=True
+deprecated=False
+server=False
+changelog=
+    0.1.0 Initial release - core query, layer import and symbology
