@@ -3,7 +3,7 @@
 Import and visualize seismic events and stations from the official
 **INGV FDSNWS Web Services** directly inside QGIS.
 
-![version](https://img.shields.io/badge/version-0.2.0-blue)
+![version](https://img.shields.io/badge/version-0.3.0-blue)
 ![QGIS](https://img.shields.io/badge/QGIS-3.20%2B%20%7C%204.x-green)
 ![license](https://img.shields.io/badge/license-GPLv2%2B-lightgrey)
 
@@ -53,6 +53,10 @@ All data comes from the official INGV FDSNWS API:
 Standard: [FDSN Web Services](https://www.fdsn.org/webservices/)
 
 ## Changelog
+
+### 0.3.0
+- Fix: campo `time` del layer eventi da `String` a `DateTime` (nativo QGIS)
+- Fix: import `QgsInterval` da `qgis.core` — la durata visibilità nel Temporal Controller ora funziona correttamente
 
 ### 0.2.0
 - QGIS 4 / Qt6 / PyQt6 compatibility: qualified enums, `QtAgg` matplotlib backend, dark-theme stylesheet fixes
