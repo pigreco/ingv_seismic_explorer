@@ -50,14 +50,14 @@ class DrawRectangleTool(QgsMapTool):
         self._rubber_band   = None
         self._start_point   = None
         self._drawing       = False
-        self.setCursor(QCursor(Qt.CrossCursor))
+        self.setCursor(QCursor(Qt.CursorShape.CrossCursor))
 
     # ------------------------------------------------------------------
     # Mouse events
     # ------------------------------------------------------------------
 
     def canvasPressEvent(self, event):
-        if event.button() == Qt.LeftButton:
+        if event.button() == Qt.MouseButton.LeftButton:
             self._start_point = self.toMapCoordinates(event.pos())
             self._drawing = True
             self._init_rubber_band()
@@ -68,7 +68,7 @@ class DrawRectangleTool(QgsMapTool):
             self._update_rubber_band(end)
 
     def canvasReleaseEvent(self, event):
-        if event.button() == Qt.LeftButton and self._drawing:
+        if event.button() == Qt.MouseButton.LeftButton and self._drawing:
             end = self.toMapCoordinates(event.pos())
             self._drawing = False
             self._clear_rubber_band()
@@ -82,7 +82,7 @@ class DrawRectangleTool(QgsMapTool):
             self._restore_previous_tool()
 
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key_Escape:
+        if event.key() == Qt.Key.Key_Escape:
             self._drawing = False
             self._clear_rubber_band()
             self.drawingCancelled.emit()
@@ -193,8 +193,8 @@ class SeismicExplorerDialog(QDialog):
         main_layout.addWidget(subtitle)
 
         separator = QFrame()
-        separator.setFrameShape(QFrame.HLine)
-        separator.setFrameShadow(QFrame.Sunken)
+        separator.setFrameShape(QFrame.Shape.HLine)
+        separator.setFrameShadow(QFrame.Shadow.Sunken)
         main_layout.addWidget(separator)
 
         # Tabs
@@ -1031,11 +1031,11 @@ class SeismicExplorerDialog(QDialog):
 
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
-        scroll.setFrameShape(QFrame.NoFrame)
+        scroll.setFrameShape(QFrame.Shape.NoFrame)
 
         browser = QTextBrowser()
         browser.setOpenExternalLinks(True)
-        browser.setStyleSheet("font-size: 10pt; background: transparent;")
+        browser.setStyleSheet("QTextBrowser { font-size: 10pt; background-color: transparent; color: palette(text); }")
         browser.setHtml("""
 <style>
   body  { font-family: sans-serif; font-size: 10pt; margin: 8px 12px; }
@@ -1044,11 +1044,11 @@ class SeismicExplorerDialog(QDialog):
   p     { margin: 4px 0 8px 0; line-height: 1.5; }
   ul    { margin: 4px 0 8px 18px; padding: 0; }
   li    { margin-bottom: 3px; line-height: 1.45; }
-  code  { font-family: monospace; background: #f0f0f0; padding: 1px 4px;
+  code  { font-family: monospace; background: #f0f0f0; color: #222222; padding: 1px 4px;
           border-radius: 3px; font-size: 9.5pt; }
-  .tip  { background: #eaf4fb; border-left: 3px solid #2980b9;
+  .tip  { background: #eaf4fb; color: #1a3a4a; border-left: 3px solid #2980b9;
           padding: 6px 10px; border-radius: 2px; margin: 6px 0; }
-  .warn { background: #fef9e7; border-left: 3px solid #f39c12;
+  .warn { background: #fef9e7; color: #4a3a00; border-left: 3px solid #f39c12;
           padding: 6px 10px; border-radius: 2px; margin: 6px 0; }
   a     { color: #2980b9; }
   hr    { border: none; border-top: 1px solid #ddd; margin: 14px 0; }

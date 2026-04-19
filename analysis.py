@@ -23,9 +23,14 @@ from qgis.core import QgsVectorLayer
 # matplotlib import — bundled with QGIS since 3.x
 try:
     import matplotlib
-    matplotlib.use("Qt5Agg")
-    from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-    from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+    try:
+        matplotlib.use("QtAgg")
+        from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
+        from matplotlib.backends.backend_qtagg import NavigationToolbar2QT as NavigationToolbar
+    except (ImportError, ValueError):
+        matplotlib.use("Qt5Agg")
+        from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+        from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
     from matplotlib.figure import Figure
     import matplotlib.pyplot as plt
     import matplotlib.dates as mdates
@@ -364,7 +369,7 @@ class AnalysisDialog(QDialog):
                 "⚠️  matplotlib non disponibile.\n"
                 "Installalo con:  pip install matplotlib"
             )
-            warn.setAlignment(Qt.AlignCenter)
+            warn.setAlignment(Qt.AlignmentFlag.AlignCenter)
             warn.setStyleSheet("color: #c0392b; font-size: 11pt; padding: 20px;")
             layout.addWidget(warn)
             layout.addWidget(self._make_close_btn())
@@ -421,7 +426,7 @@ class AnalysisDialog(QDialog):
         self._ts_ax = self._ts_fig.add_subplot(111)
         self._ts_ax.set_facecolor("#fafafa")
         self._ts_canvas = FigureCanvas(self._ts_fig)
-        self._ts_canvas.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self._ts_canvas.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         vl.addWidget(NavigationToolbar(self._ts_canvas, widget))
         vl.addWidget(self._ts_canvas)
 
@@ -461,9 +466,9 @@ class AnalysisDialog(QDialog):
     def _build_stats_bar(self):
         """Build a compact stats summary row."""
         frame = QFrame()
-        frame.setFrameShape(QFrame.StyledPanel)
+        frame.setFrameShape(QFrame.Shape.StyledPanel)
         frame.setStyleSheet(
-            "background: #f0f4f8; border-radius: 4px; padding: 4px;"
+            "background-color: #f0f4f8; color: #222222; border-radius: 4px; padding: 4px;"
         )
         hl = QHBoxLayout(frame)
         hl.setContentsMargins(8, 4, 8, 4)
@@ -495,7 +500,7 @@ class AnalysisDialog(QDialog):
             hl.addLayout(col)
             if stats.index((label, value)) < len(stats) - 1:
                 sep = QFrame()
-                sep.setFrameShape(QFrame.VLine)
+                sep.setFrameShape(QFrame.Shape.VLine)
                 sep.setStyleSheet("color: #ccc;")
                 hl.addWidget(sep)
 
@@ -511,7 +516,7 @@ class AnalysisDialog(QDialog):
         vl = QVBoxLayout(widget)
         vl.setContentsMargins(0, 0, 0, 0)
         canvas = FigureCanvas(fig)
-        canvas.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        canvas.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         vl.addWidget(NavigationToolbar(canvas, widget))
         vl.addWidget(canvas)
         return widget
