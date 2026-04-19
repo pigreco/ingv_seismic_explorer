@@ -32,7 +32,7 @@ def build_events_layer(events, layer_name="INGV Terremoti"):
 
     Attribute table columns:
         event_id    (String)  - INGV unique event identifier
-        time        (String)  - ISO origin time (UTC)
+        time        (DateTime) - Origin time (UTC)
         magnitude   (Double)  - Magnitude value
         mag_type    (String)  - Magnitude type (ML, Mw, Mb, ...)
         depth_km    (Double)  - Hypocentral depth in km
@@ -56,7 +56,7 @@ def build_events_layer(events, layer_name="INGV Terremoti"):
     # Define attribute fields
     fields = QgsFields()
     fields.append(QgsField("event_id",   QVariant.String))
-    fields.append(QgsField("time",       QVariant.String))
+    fields.append(QgsField("time",       QVariant.DateTime))
     fields.append(QgsField("magnitude",  QVariant.Double))
     fields.append(QgsField("mag_type",   QVariant.String))
     fields.append(QgsField("depth_km",   QVariant.Double))
@@ -77,7 +77,7 @@ def build_events_layer(events, layer_name="INGV Terremoti"):
         )
         feat.setAttributes([
             ev.event_id,
-            ev.time,
+            QDateTime.fromString(ev.time[:19], "yyyy-MM-ddTHH:mm:ss"),
             ev.magnitude,
             ev.mag_type,
             ev.depth_km,
