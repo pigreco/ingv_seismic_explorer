@@ -3,7 +3,7 @@
 Import and visualize seismic events and stations from the official
 **INGV FDSNWS Web Services** directly inside QGIS.
 
-![version](https://img.shields.io/badge/version-0.3.0-blue)
+![version](https://img.shields.io/badge/version-0.3.2-blue)
 ![QGIS](https://img.shields.io/badge/QGIS-3.20%2B%20%7C%204.x-green)
 ![license](https://img.shields.io/badge/license-GPLv2%2B-lightgrey)
 
@@ -53,6 +53,12 @@ All data comes from the official INGV FDSNWS API:
 Standard: [FDSN Web Services](https://www.fdsn.org/webservices/)
 
 ## Changelog
+
+### 0.3.2
+- Security: use `# nosec B310` to suppress Bandit B310 on `urlopen` (`# noqa` is ignored by Bandit)
+
+### 0.3.1
+- Security: validate HTTPS scheme before `urllib.request.urlopen` (Bandit B310)
 
 ### 0.3.0
 - Fix: campo `time` del layer eventi da `String` a `DateTime` (nativo QGIS)
