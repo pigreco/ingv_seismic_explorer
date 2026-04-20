@@ -253,12 +253,15 @@ class EventFetchWorker(QThread):
     def run(self):
         """Execute the HTTP request and parse the response."""
         try:
+            if not self.url.startswith("https://"):
+                self.error.emit("URL non valido: sono permessi solo endpoint HTTPS")
+                return
             self.progress.emit("Connessione a webservices.ingv.it...")
             req = urllib.request.Request(
                 self.url,
                 headers={"User-Agent": "QGIS-INGV-SeismicExplorer/0.1"}
             )
-            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:  # noqa: S310
                 self.progress.emit("Download dati in corso...")
                 raw = resp.read().decode("utf-8")
 
@@ -304,12 +307,15 @@ class StationFetchWorker(QThread):
     def run(self):
         """Execute the HTTP request and parse the response."""
         try:
+            if not self.url.startswith("https://"):
+                self.error.emit("URL non valido: sono permessi solo endpoint HTTPS")
+                return
             self.progress.emit("Download stazioni sismiche INGV...")
             req = urllib.request.Request(
                 self.url,
                 headers={"User-Agent": "QGIS-INGV-SeismicExplorer/0.1"}
             )
-            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:  # noqa: S310
                 raw = resp.read().decode("utf-8")
 
             self.progress.emit("Parsing stazioni...")

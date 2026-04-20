@@ -3,7 +3,7 @@ name=INGV Seismic Explorer
 qgisMinimumVersion=3.20
 qgisMaximumVersion=4.99
 description=Import and visualize seismic events from INGV (Istituto Nazionale di Geofisica e Vulcanologia) directly in QGIS
-version=0.3.0
+version=0.3.1
 author=Salvatore Fiandaca
 email=pigrecoinfinito@gmail.com
 about=INGV Seismic Explorer connects to the official INGV FDSNWS web services to download
@@ -30,6 +30,7 @@ experimental=True
 deprecated=False
 server=False
 changelog=
+    0.3.1 Security: validate HTTPS scheme before urllib.request.urlopen (Bandit B310 fix)
     0.3.0 Fix: campo time da String a DateTime; fix import QgsInterval da qgis.core (durata visibilità Temporal Controller)
     0.2.0 QGIS 4 / Qt6 / PyQt6 compatibility: qualified enums, matplotlib QtAgg backend, dark-theme stylesheet fixes, qgisMaximumVersion=4.99
     0.1.0 Initial release - core query, layer import and symbology
