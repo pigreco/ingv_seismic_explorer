@@ -261,7 +261,7 @@ class EventFetchWorker(QThread):
                 self.url,
                 headers={"User-Agent": "QGIS-INGV-SeismicExplorer/0.1"}
             )
-            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:  # noqa: S310
+            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:  # nosec B310
                 self.progress.emit("Download dati in corso...")
                 raw = resp.read().decode("utf-8")
 
@@ -315,7 +315,7 @@ class StationFetchWorker(QThread):
                 self.url,
                 headers={"User-Agent": "QGIS-INGV-SeismicExplorer/0.1"}
             )
-            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:  # noqa: S310
+            with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:  # nosec B310
                 raw = resp.read().decode("utf-8")
 
             self.progress.emit("Parsing stazioni...")
