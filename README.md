@@ -55,7 +55,7 @@ Standard: [FDSN Web Services](https://www.fdsn.org/webservices/)
 ## Changelog
 
 ### 1.0.0
-- First stable release — promotes 0.3.2 to stable (`experimental=False`)
+- First official release (experimental)
 
 ### 0.3.2
 - Security: use `# nosec B310` to suppress Bandit B310 on `urlopen` (`# noqa` is ignored by Bandit)

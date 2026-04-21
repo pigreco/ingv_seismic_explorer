@@ -26,11 +26,11 @@ hasProcessingProvider=no
 tags=seismic, earthquake, INGV, Italy, monitoring, geology, geophysics, FDSN
 category=Web
 icon=icon.png
-experimental=False
+experimental=True
 deprecated=False
 server=False
 changelog=
-    1.0.0 First stable release — promotes 0.3.2 to stable (experimental=False)
+    1.0.0 First official release (experimental)
     0.3.2 Fix: use # nosec B310 to suppress Bandit B310 on urlopen (# noqa was ignored by Bandit)
     0.3.1 Security: validate HTTPS scheme before urllib.request.urlopen (Bandit B310 fix)
     0.3.0 Fix: campo time da String a DateTime; fix import QgsInterval da qgis.core (durata visibilità Temporal Controller)
